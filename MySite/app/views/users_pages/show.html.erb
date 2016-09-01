@@ -1,0 +1,12 @@
+<div>
+<% if current_user %>
+
+<%= image_tag current_user.avatar.url(:medium), class: "img-thumbnail" %>
+<h4>Email: <%= current_user.email %></h4>
+<h4>Adress: <%= current_user.adress %></h4>
+<h4>Age: <%= current_user.age %></h4>
+<% g = current_user.gender ? 'Man' : 'Woman' %>
+<h4>Gender: <%= g %></h4>
+<h4>On site since: <%= current_user.created_at %></h4>
+<% end %>
+</div>

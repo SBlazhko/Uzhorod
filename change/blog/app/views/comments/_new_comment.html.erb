@@ -1,0 +1,13 @@
+<button id="new_com_but">Новий коментар</button>
+<div class="new_com_form" style="display:none">
+<% if @current_user %>
+<%= form_for [@post, @post.comments.build], remote: true, id: 'new_comment' do |f| %><!-- /posts/1/comments -->
+  <%= f.text_area :content %>
+  <br>
+  <br>
+  <%= f.submit "New Comment" %>
+  <% end %>
+  <% else %>
+  <h3> Please login, if you want to comment this post</h3>
+<% end %>
+</div>

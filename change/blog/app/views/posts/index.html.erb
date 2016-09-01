@@ -1,0 +1,31 @@
+<!-- <h1>Listing Posts</h1>
+ -->
+<% if flash[:notice] %>
+<h3 class="userUp"><%= flash[:notice] %></h3>
+<% end %>
+
+<div class="panel panel-default">
+
+  <!-- Table -->
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th><%= t('posts.title') %></th>
+      <th><%= t('posts.sct') %></th>
+      <th colspan="4"></th>
+  <tbody>
+    <% numb = 0 %>
+    <% @posts.each do |post| %>
+      <tr class="item">
+        <td><%= numb+=1 %></td>
+        <td><%= post.title %></td>
+        <td><%= post.short_content %></td>
+        <td><%= link_to t('posts.gtp'), post_path(post) %></td>
+      </tr>
+    <% end %>
+    <br>
+  </tbody>
+  </table>
+</div>
+

@@ -1,0 +1,75 @@
+Установка Ruby через RVM + bundler
+http://bundler.io/
+https://rvm.io/rvm/install
+https://rubygems.org/ - все гемы лежат здесь
+==================================
+http://rusrails.ru/ - сайт о руби на русском 
+https://www.ruby-toolbox.com/ - Инструкция о руби и рельсах
+http://www.tutorialspoint.com/ruby-on-rails/index.htm - описание возможностей руби и реилс
+=============================================================================================
+About Gems
+http://rusrails.ru/active-record-basics - основы ActiveRecord
+=============================================================================================
+Sinatra
+http://www.sinatrarb.com/intro-ru.html - введение в сенатру на русском
+http://recipes.sinatrarb.com/p/databases/postgresql-activerecord?#article - настройка базы pstgresql для сенатры 
+http://www.sinatrarb.com/contrib/ - sinatra-contrib
+https://ga-chicago.gitbooks.io/wdi-ravenclaw/content/05_fullstack_sinatra/ - fulstack sinatra
+================================================================================================
+Rails docs
+http://guides.rubyonrails.org/routing.html - роутінг
+http://rusrails.ru/rails-database-migrations - migrations
+http://rusrails.ru/rails-form-helpers - form helpers
+====================================================================================================
+Create rails project
+1) rails new <Name> - create new rails project by name
+2) bundle or bundle install - donwloads ness gem with Gemfile
+3) rails s - run server and go to http://locallhost:9000 if you will see rails_welcome_page it means all done
+
+4)rails g model <Name> - create class(model) your app, you can create many model to different ness
+- in models you can add assotiations one to all and all to one like *belongs_to :tag* and *has_many :destinations* 
+5)open db/migrate and add collumns which you want
+6)rake db:migrate - create migrations with models
+7)rake db:seed - create seed with models
+--rails g migration AddUserIdToPost user_id:integer - add collumn to table
+--rails g migration CreateCategoriesPosts post_id category_id - create join table	
+--rails RemoveAgeFromUser - remove collumn
+
+8)Now we create controller, route and views
+- rails g controller <Names> - create controller, cont must call with *s* in the end
+- in config/routes create routes like that *get '/tags' => 'tags#index'* - it route to controller get method index
+- in controller create method *def index 
+				 @tags = Tag.all 
+				end*
+- in views create list of objects like this <% @tags.each do |tag| %>
+						<%= tag.image %>
+						<%= tag.title %>
+						<% end %>
+9) Now simple app are creted you can see list of obgect in browser
+
+=================================================================================================
+Підготовка до тестів:
+- rails g rspec:instal - створення спека тестів
+- bundle exec espec -запуск всіх тестів /spec/controller/user.rb - запуск конкретного файлу
+- rails g rspec:model User - створення спека для моделі тестування
+- rake db:migrate RAILS_ENV="test"- сворює міграцію для тест
+- rails g rspec:controller <name> - створення спека для контроллера тестування
+Як зробити логінізацію для тестів
+1) створюємо хелпер для логінізації spec_test_helper.rb в dir spec/support 
+2) в цьому файлі модель module 
+SpecTestHelper
+  def login(user)
+    session[:current_user] = user.id
+  end
+end
+3) пропсуємо в spec/_spec_helper config.include SpecTestHelper, :type => :controller
+4) пишем цей метод для кожного юзера в тестах
+
+Геми для тестування:
+- rspec-rails - основний гем для тестування і запуску тестів
+- factory-girl - гем для створення обєктів по шаблону, без дублювання в тестах
+- faker - гем для заповнення фейковими даними полів обєктів, використовуэться з factory-girl
+- shoulda-matchers - гем для спрощення тестування валыдацій і різних перевірок(використовувати саме його), використовуэться з factory-girl
+
+===================================================================================================== 
+

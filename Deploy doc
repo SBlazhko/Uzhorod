@@ -1,0 +1,66 @@
+Deploy instruction on empty server
+AFTER each changing in programm  
+1)Install in Gemfile 
+- gem 'capistrano-rails', group: :development
+- in development groupe - gem 'capistrano-rvm', gem 'capistrano-bundler'
+- Create cap: cap install
+2)Create new gitRepo for your project
+3)Change and uncomment in 'config/deploy.rb' 
+- set :application, 'sblazhko' - project name
+- set :repo_url, 'https://github.com/SBlazhko/site2.git' - put your project git link
+- set :deploy_to, '/home/deploy/flash' - way to server project folder(after create folder on server)
+4)paste in 'config/secrets.yml' secret_key
+4)Get secret key: ssh-add -L 
+- paste secret_key in: Open GitHub, profile settings, SSH and GPG keys, new SSH key,AddSHHkey 
+5)Install gem install passenger
+6)In 'config/deploy/production.id' paste: server '127.0.0.1', user: 'deploy', roles: %w{app db web}
+7)In 'config/initializers/devise.rb' uncomment "config.secret_key =..."
+8)In 'config/deploy.rb' paste: set :rvm_ruby_version, "2.2.4"
+11)Install nginx module - rvmsudo passenger-install-nginx-module
+12)Need Huinushka - sudo apt-get install libcurl4-openssl-dev
+12)Deploy: cap production deploy
+13)'opt/nginx/conf' and sudo gedit nginx.conf - change like down text
+server {
+        listen       3333;
+        #server_name  localhost;
+
+        #charset koi8-r;
+	root /home/deploy/flash/current/public;
+	passenger_enabled on;
+        #access_log  logs/host.access.log  main;
+	
+        #location / {
+         #   root   html;
+          #  index  index.html index.htm;
+        #}
+
+14)'opt/nginx/sbin' and sudo ./nginx - run server
+15)'opt/nginx' and tail -f ./logs/* - run logs
+--------------------
+On server
+1)Create new user: sudo adduser deploy - name "deploy" or go to link
+- http://capistranorb.com/documentation/getting-started/authentication-and-authorisation/ 
+2 install rvm and ruby
+3 Install bundler "gem install bundler" and bundle
+4 create folder "project name" in rvm folder and cd in project
+5 create in '.ssh' file authorized_keys and paste secret_key with ssh-add -L
+
+Nginx setting thinkmobiles: 
+1)Go to: /etc/nginx/sites-enabled
+2)nano myvotetoday.conf and create and copy same filein such dirrectory
+3)sudo nano tm_network.conf 
+server {
+        listen 8085;
+        server_name tm_network.test.thinkmobiles.com;
+        passenger_enabled on;
+        root /var/www/social_network_api/current/public;
+}
+
+4)sudo service nginx restart 
+===================================================================================================
+
+Deploy on Heroku
+1)Change you 'config/database.yml', heroku works just with postgresql adapter
+2)https://devcenter.heroku.com/articles/getting-started-with-ruby#deploy-the-app
+3)All rake commands use with heroku run like: heroku run rake db:migrate   
+

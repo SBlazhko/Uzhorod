@@ -1,0 +1,21 @@
+<ul>
+<h1><%= t('posts.nwp') %> </h1>
+
+<%= form_for @post  do |f| %>
+  <%= f.text_field :title %>
+  <br>
+  <br>
+  <%= f.text_area :content %>
+  <br>
+  <br>
+  <%= f.submit t('posts.crpos'), class: 'btn mbt' %>
+<% end %>
+
+
+<br>
+<a href="<%= posts_path %>">
+<button type="button" class="btn btn-default" aria-label="Left Align" >
+  <span class="glyphicon glyphicon-arrow-left" aria-hidden="true" </span>
+</button>
+</a>
+</ul>

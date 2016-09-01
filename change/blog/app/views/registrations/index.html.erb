@@ -1,0 +1,31 @@
+<div class="panel panel-default">
+
+<% if flash[:notice] %>
+<h3><%= flash[:notice] %></h3>
+<% end %>
+  <!-- Table -->
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th><%= t('users.name') %></th>
+      <th><%= t('users.email') %></th>
+      <th><%= t('users.pcnt') %></th>
+      <th colspan="4"></th>
+  <tbody>
+    <% numb = 0 %>
+    <% @user.each do |user| %>
+      <tr>
+        <td><%= numb+=1 %></td>
+        <td><%= user.first_name %>
+            <%= user.last_name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.posts.count %></td>
+        <td><%= link_to t('users.gobtn'), user_path(user.id) %></td>
+      </tr>
+    <% end %>
+    <br>
+  </tbody>
+  </table>
+</div>
+

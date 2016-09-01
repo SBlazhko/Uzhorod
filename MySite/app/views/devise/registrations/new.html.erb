@@ -1,0 +1,31 @@
+<div class="log_in">
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="input-group margin-bottom-sm">
+  <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+  <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: "Email address" %>
+</div>
+
+<div class="input-group">
+  <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+  <% if @minimum_password_length %>
+    <% end %>
+  <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "6 characters minimum" %>
+</div>
+<div class="input-group">
+  <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+  <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "password_confirmation" %>
+</div>
+<br>
+  <div class="actions">
+    <%= f.submit "Sign up", class: "btn btn-primary" %>
+  </div>
+<% end %>
+<br>
+
+<%= render "devise/shared/links" %>
+
+</div>

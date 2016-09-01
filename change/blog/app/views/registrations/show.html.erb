@@ -1,0 +1,25 @@
+<ul>
+<div class="page-header">
+  <% user = User.find_by_id(params[:id]) %>
+  <h4>Персональна сторiнка користувача <%= user.first_name %> <%= user.last_name %></h4>
+</div>
+<div class="row" >
+  <div class="col-xs-6 col-md-3">
+      <%= image_tag 'tush.jpg', class: 'img-rounded' ,width: 200 %>
+  </div>
+  <h4>Користувач : <%= user.first_name %> <%= user.last_name %></h4>
+<h4>Емейл : <%= user.email %></h4>
+<h4>Кількість постів : <%= user.posts.count %></h4>
+<h4>Кількість підписників :<%= user.followers.count %></h4>
+
+<% if user.id == @current_user.id %>
+    <% elsif @follow = Follow.find_by(followed_id: params[:id], follower_id: @current_user.id) %>
+    <%= button_to t('users.unflw'), unfollow_path(user.id), method: :delete, class: 'btn btn-success' %>
+    <% elsif %>
+    <%= button_to t('users.folw'), follow_path(user.id), method: :post, class: 'btn btn-success' %>
+<% end %>
+
+<div>
+</ul>
+
+

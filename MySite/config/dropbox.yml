@@ -1,0 +1,10 @@
+app_key: "xyifz87r51i8jay"
+app_secret: "ga27iroxd2xfhfm"
+access_token: "780ag75pkte0a8ro"
+access_token_secret: "90dx4am98gllaps"
+user_id: "480354945"
+access_type: "app_folder"
+
+
+# rake dropbox:authorize APP_KEY=xyifz87r51i8jay APP_SECRET=ga27iroxd2xfhfm ACCESS_TYPE=app_folder
+# wYAi3Y28-2AAAAAAAAAN_doqAJh43QvOSZQweDEb4NMkAx36FcqpE8f9dYh1-vRQ

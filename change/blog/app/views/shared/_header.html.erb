@@ -1,0 +1,22 @@
+<ul class="nav nav-pills navbarr">
+  <li><%= link_to t('header.posts'), posts_path %></li>
+  <li><%= link_to t('header.users'), users_path %></li>
+  <% if @current_user %>
+  <li><%= link_to t('header.myP'), liked_path %></li>
+  <li><%= link_to t('header.newP'), new_post_path %></li>
+  <li><%= link_to t('header.edit'), edit_registration_path(@current_user) %></li>
+  <li><%= link_to t('header.logout'), session_path(@current_user), method: :delete %></li>
+  <% else %>
+  <li><%= link_to t('header.login'), new_session_path %></li>
+  <li><%= link_to t('header.newU'), new_registration_path %></li>
+  <% end %>
+  <li role="presentation" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+      <%= t('header.lang') %> <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" role="menu">
+        <li><%= link_to 'English', '?locale=en' %></li>
+        <li><%= link_to 'Українська', '?locale=uk' %></li>
+    </ul>
+  </li>
+</ul>

@@ -1,0 +1,18 @@
+<h2>Hello <%=params['login']%>, it's your personal page :)<h2>
+<h4>You can delete yourself from database or update your personal data</h4>
+
+<form method="post">
+<input type="submit" value="Delete from database">
+</form>
+
+<form action="/update" method="get">
+<input type="submit" value="Change password">
+</form>
+
+<form action="/update/sessions" method="post">
+<input type="submit" value="log out">
+</form>
+
+<form action="/listofuser" method="get">
+<input type="submit" value="admin">
+</form>

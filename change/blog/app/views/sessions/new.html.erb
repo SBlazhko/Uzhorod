@@ -1,0 +1,24 @@
+<ul>
+<h1><%= t('header.hlog') %></h1>
+
+<% if flash[:notice] %>
+<h3 class="notice"><%= flash[:notice] %></h3>
+<% end %>
+
+<% if flash[:error] %>
+<h3 class="error"><%= flash[:error] %></h3>
+<% end %>
+
+
+<%= form_for  @user, url: sessions_path do |f| %>
+  <%= f.text_field :email %>
+  <br>
+  <br>
+  <%= f.password_field :password %>
+  <br>
+  <br>
+  <%= f.submit t('header.login'), class: 'btn mbt' %>
+<% end %>
+</ul>
+
+

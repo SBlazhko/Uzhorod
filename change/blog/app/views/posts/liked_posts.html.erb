@@ -1,0 +1,24 @@
+<div class="panel panel-default">
+
+  <!-- Table -->
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th><%= t('posts.title') %></th>
+      <th><%= t('posts.sct') %></th>
+      <th colspan="4"></th>
+  <tbody>
+    <% numb = 0 %>
+    <% @like_posts.each do |post| %>
+      <tr class="item">
+        <td><%= numb+=1 %></td>
+        <td><%= post.title %></td>
+        <td><%= post.short_content %></td>
+        <td><%= link_to t('posts.gtp'), post_path(post) %></td>
+      </tr>
+    <% end %>
+    <br>
+  </tbody>
+  </table>
+</div>

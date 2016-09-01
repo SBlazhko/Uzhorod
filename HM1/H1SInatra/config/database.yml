@@ -1,0 +1,15 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: database_proj_develop
+  pool: 5
+  username: SBlazhko
+  password: 1
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: database_proj_production
+  pool: 2
+  username: SBlazhko
+  password: 1

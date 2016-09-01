@@ -1,0 +1,17 @@
+<div class="com_index" >
+  <% @post.comments.each do |comment| %>
+<div class="panel panel-success">
+    <div class="panel-heading">
+    <%= comment.user.first_name %>
+    <%= comment.user.last_name %>
+    <%= time_ago_in_words(comment.created_at) %>
+    <% if comment.user == @current_user %>
+    <%= link_to 'Delete', post_comment_path(@post, comment), method: :delete %>
+    <%= link_to 'Edit', edit_post_comment_path(@post, comment) %>
+    <% end %></div>
+  <div class="panel-body">
+    <%= comment.content %>
+  </div>
+  </div>
+<% end %>
+</div>

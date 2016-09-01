@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<br>
+<p>
+	<% @car.car_images.each do |image| %>
+  	<td><%= image_tag image.avatar.url(:medium) %></td>
+  <% end %>
+</p>
+<br>
+<p>
+  <strong>Title: </strong>
+  <%= @car.title %>
+</p>
+
+<p>
+	<strong>Price: </strong>
+	<%= @car.price.format %>
+</p>
+<p>
+	<strong>UAH price: </strong>
+	<%= @car.uah_price.format %>
+</p>
+
+<%= link_to 'Edit', edit_car_path(@car) %> |
+<%= link_to 'Back', cars_path %>
+<%= link_to 'Delete', car_path, method: :delete %>

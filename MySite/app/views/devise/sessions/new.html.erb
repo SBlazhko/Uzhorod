@@ -1,0 +1,32 @@
+<div class="log_in">
+<h2>Log in</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="input-group margin-bottom-sm">
+  <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+  <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: "Email address" %>
+</div>
+
+<div class="input-group">
+  <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+  <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
+</div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end -%>
+
+   <div class="actions">
+    <%= f.submit "Sign in", class: "btn btn-primary" %>
+    <%= link_to "Forgot password?", new_password_path(resource_name), class: "btn btn-default" %>
+  </div>
+  </div>
+
+
+<% end %>
+<br>
+<%= render "devise/shared/links" %>
+</div>
