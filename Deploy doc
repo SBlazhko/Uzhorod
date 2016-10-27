@@ -62,5 +62,29 @@ server {
 Deploy on Heroku
 1)Change you 'config/database.yml', heroku works just with postgresql adapter
 2)https://devcenter.heroku.com/articles/getting-started-with-ruby#deploy-the-app
-3)All rake commands use with heroku run like: heroku run rake db:migrate   
+3)All rake commands use with heroku run like: heroku run rake db:migrate
 
+Without capistrano
+1)Create project folder
+2)git clone
+3)rake db:create RAILS_ENV="production"
+4)rake db:migrate RAILS_ENV="production"
+5)rails s -e production -b 46.36.222.81 -p 80 -d -откроет в демоне
+
+redis-server - запуск редис сервера
+bundle exec sidekiq -d -L log/sidekiq.log -C config/sidekiq.yml -e production - запуск сайдкик в демон режжиме
+
+lsof -wni tcp:80 - посмотреть открытые порты(:80 можна менять например на :3000)
+kill -9 portnumb - закрыть порт
+ps aux | grep [s]ideki - поиск порта по ключевому слову
+
+
+Merge in AggiliumLabs
+git checkout master
+git pull origin master
+git checkout <feature branch>
+git rebase master
+git rebase -i master
+git checkout master
+git merge <feature branch>
+git push origin master
